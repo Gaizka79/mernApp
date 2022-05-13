@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+
+import { BrowserRouter } from 'react-router-dom';
+import 'normalize.css';
+
+import Header from './components/Header';
+import Main from './components/Main';
+import Footer from './components/Footer';
+
 import './App.css';
 
 function App() {
-  const [ data, setData ] = useState();
-
-  useEffect(() => {
-    fetch('/api')
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
-
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>{!data ? "Loading..." : data}</p>
-        </header>
-      </div>
-    );
+  return (
+    <div className="App">
+      <BrowserRouter>
+          <Header/>
+          <Main/>
+      </BrowserRouter>
+      <Footer/>
+    </div>
+  );
   
 }
 
