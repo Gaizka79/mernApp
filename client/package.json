@@ -4,6 +4,9 @@
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.7.0",
     "axios": "^0.27.2",
     "dotenv": "^16.0.1",
     "normalize.css": "^8.0.1",
@@ -11,9 +14,9 @@
     "react-dom": "^18.1.0",
     "react-hook-form": "^7.31.1",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "0.9.5",
+    "react-scripts": "^5.0.1",
     "sass": "^1.51.0",
-    "uuid4": "^2.0.2",
+    "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -24,5 +27,17 @@
   },
   "devDependencies": {
     "create-react-component-folder": "^0.3.7"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
