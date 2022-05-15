@@ -1,0 +1,8 @@
+@import '../utils/variables.scss';
+
+footer{
+    background-color: $background-header;
+    color: white;
+    position: relative;
+    bottom: 0;
+}

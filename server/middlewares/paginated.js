@@ -7,6 +7,7 @@ function paginatedResults() {
       const limit = parseInt(req.query.limit);
       const skipIndex = (page - 1) * limit;
       const results = {};
+      
       try {
         console.log("consulta");
         results.results = await landings.find()
@@ -15,8 +16,10 @@ function paginatedResults() {
           .skip(skipIndex)
           .exec();
         res.paginatedResults = results;
-        console.log("mio" + results.results);
+        console.log("mio" + results.results.length);
+        console.log(req.query);
         res.status(200).send(results.results);
+        //res.json(results.results);
         next();
       } catch (e) {
         console.log(e);

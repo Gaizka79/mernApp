@@ -12,6 +12,7 @@ function Cards (props){
         <p><b>Fecha:</b> {aste.year}</p>
       
       </article>
+      
     )
   }
 }

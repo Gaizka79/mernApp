@@ -1,4 +1,46 @@
 import React, { useState, useEffect } from "react";
+
+
+
+import { v4 as uuidv4 } from 'uuid';
+
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
+
+
+
+
+function Landings () {
+
+  useEffect(() => {
+    function getMapa() {
+      var map = L.map('map').setView([51.505, -0.09], 2);
+      L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZ2FpemthNzkiLCJhIjoiY2t6enI2Ym85MGQ1NDNwcXBiMHFoajl1dCJ9.e3T9xPuhX8HC0Ib-K_06OA', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1IjoiZ2FpemthNzkiLCJhIjoiY2t6enI2Ym85MGQ1NDNwcXBiMHFoajl1dCJ9.e3T9xPuhX8HC0Ib-K_06OA'
+      }).addTo(map);
+    }
+    /* setTimeout(() => {
+      getMapa();
+    }, 2000); */
+    getMapa();
+
+  }, []);
+  
+  return (
+    <>
+      <div id="map"></div>
+    </>
+  )
+}
+export default Landings;
+/*
+import React, { useState, useEffect } from "react";
 import Card from './Cards';
 import useAxios from "../../../hooks/useAxios";
 import axios from 'axios';
@@ -17,7 +59,7 @@ function Landings () {
     console.log(filtro);
     if (filtro) {
       async function getFiltrados() {
-        const res = await axios.get(`http://localhost:5000/landing/mass?minimum_mass=${filtro}`)
+        const res = await axios.get(`http://localhost:5000/landing/mass?minimum_mass=${filtro}&page=${page}&limit=${limit}`)
         const data = await res.data;
         setAsteroides(data);
         console.log("badago filtrorik");
@@ -47,11 +89,10 @@ function Landings () {
     setPage(page+1);
   }
   function handleAnterior () {
-    setPage(page-1);
+    page>1? setPage(page-1) :"";
   }
   function handleLimit (e) {
     e.preventDefault();
-    console.log(e.target.value);
     setLimit(e.target.value);
   }
 
@@ -69,24 +110,27 @@ function Landings () {
         <TextField id='outlined-basic' label='Filtrar por peso mínimo: ' variant='filled' name='minimum_mass' />
         <Button variant='contained' type="submit" className="Button"  sx={{margin:1}}>Buscar</Button>
       </form>
+      <div className="paginacion">
+        <Button variant='contained' className="Button" name='ant' onClick={handleAnterior} >Anterior</Button>
+        <Button variant='contained' className="Button" name='sig' onClick={handleSiguiente} >Siguiente</Button>
+      </div>
       <div className="padreCards">
         {asteroides===[] ? ""
         : asteroides.map((temp) =><Card key={uuidv4()} value={temp} />)}
       </div>
-      <div className="paginacion">
-      <h2>Paginas:</h2>
-        <label htmlFor="limit">Elementos por pagina:</label>
-        <input type="text" name="limit" id="limit" onChange={handleLimit}/>
-        <button name='ant' onClick={handleAnterior} >Anterior</button>
-        <button name='sig' onClick={handleSiguiente} >Siguiente</button>
-      </div>
+      
     </>
   )
 
 }
 
-export default Landings;
+export default Landings;*/
 /*
+<div className="paginacion">
+        <button name='ant' onClick={handleAnterior} >Anterior</button>
+        <button name='sig' onClick={handleSiguiente} >Siguiente</button>
+</div>
+
 const result = useAxios('http://localhost:5000/landing');
   const data = result.slice(0,100);
   console.log("el resultado de data es:");
