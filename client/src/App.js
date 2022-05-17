@@ -1,25 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
+//import React from 'react';
+import './styles/styles.scss';
+import { BrowserRouter } from 'react-router-dom';
+
+import Header from './components/Header';
+import Main from './components/Main';
+import Footer from './components/Footer';
+
+import 'normalize.css';
+
+import { useState } from 'react';
+import { userContext } from './context/userContext';
 
 function App() {
-  const [ data, setData ] = useState();
 
-  useEffect(() => {
-    fetch('/api')
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
+  const [ user, setUser ] = useState("Gaizka");
 
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>{!data ? "Loading..." : data}</p>
-        </header>
-      </div>
-    );
-  
+  const login = (name) => setUser(name), logout = () => setUser("");
+
+  const userData = { user, login, logout };
+
+  return (
+    <div className="App">
+      <BrowserRouter>
+      <userContext.Provider value={userData}>
+          <Header/>
+          <Main/>
+          </userContext.Provider> 
+      </BrowserRouter>
+      <Footer/>
+    </div>
+    
+  );
 }
 
 export default App;
