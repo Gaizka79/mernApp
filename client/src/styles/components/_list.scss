@@ -1,0 +1,38 @@
+@import '../utils/variables.scss';
+
+.paginacion{
+    display:flex;
+    justify-content: space-between;
+}
+
+.cards {
+    flex: 1 20%;
+    text-align: center;
+    flex-direction: column;
+    border-style:double;
+    border-radius: 0.5em;
+    max-width: 20%;
+    margin: 1em;
+    /* background-color: #99d98c; */
+    box-shadow: 5px 5px 10px;
+    word-wrap: break-word;
+    overflow: hidden;
+    /* background-color: wheat; */
+    background-image: url('../../assets/asteroide1.jpeg');
+    backdrop-filter: opacity(0.5);
+    background-position: center;
+    background-size: cover;
+    color: white;
+    
+}
+
+.padreCards{
+    /* background-color: #ade8f4; */
+
+    background-image: url('../../assets/nebula.jpg');
+    background-position: center;
+    background-size: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}

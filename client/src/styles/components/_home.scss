@@ -1,0 +1,26 @@
+@import '../utils/variables.scss';
+
+.home {
+    color: $text-color;
+    font-family: 'Helvetica';
+    //border: 10px solid pink;
+    padding-bottom: 2em;
+    background-image: url('../../assets/ESA.jpg');
+    background-position: center;
+    background-size: cover;
+}
+    img{
+        width: 50%;
+        height: auto;
+    }
+    .explanation{
+        //color: $text-color;
+        font-family: 'Helvetica';
+        font-size: larger;
+        padding: 2em;
+    }
+.filtro {
+    //background-image: url('../../assets/astronauta.jpg');
+    background-position: auto;
+    background-size: cover;
+}
