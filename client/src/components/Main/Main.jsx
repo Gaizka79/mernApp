@@ -20,13 +20,3 @@ function Main () {
 }
 
 export default Main;
-/*  
-import logo from '../../logo.svg';  
-let data = "";
-<div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>{!data ? "Loading..." : data}</p>
-        </div>
-      </div>
-      */

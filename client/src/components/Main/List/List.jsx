@@ -8,16 +8,18 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 function List () {
-  const [ filtro, setFiltro ] = useState();
+  const [ filtro, setFiltro ] = useState(0);
   const [ asteroides, setAsteroides ] = useState([]);
   const [ page, setPage ] = useState(1);
   const [ limit, setLimit ] = useState(10);
+  const [ order, setOrder ] = useState(1);
+  const [ xMasa, setXmasa ] = useState(1);
 
   useEffect(() => {
     console.log(filtro);
     if (filtro) {
       async function getFiltrados() {
-        const res = await axios.get(`http://localhost:5000/landing/mass?minimum_mass=${filtro}&page=${page}&limit=${limit}`)
+        const res = await axios.get(`http://localhost:5000/landing/mass?minimum_mass=${filtro}&page=${page}&limit=${limit}&order=${xMasa}`)
         const data = await res.data;
         setAsteroides(data);
         console.log("badago filtrorik");
@@ -29,7 +31,7 @@ function List () {
       console.log("ez dago filtrorik");
       async function getSinFiltrar() {
         console.log("sin filtros");
-        const result = await axios.get(`http://localhost:5000/landing?page=${page}&limit=${limit}`);
+        const result = await axios.get(`http://localhost:5000/landing?page=${page}&limit=${limit}&order=${order}&minimum_mass=${filtro}`);
         //const res = await result.data.slice(0,30);
         const res = await result.data;
         //const data = res.slice(0,30);
@@ -41,7 +43,7 @@ function List () {
       getSinFiltrar();
     }
     console.log(asteroides);
-  }, [filtro, page, limit]);
+  }, [filtro, page, limit, order, xMasa]);
 
   function handleSiguiente () {
     setPage(page+1);
@@ -61,13 +63,26 @@ function List () {
     //handleFiltro(filtro);
   }
 
+  function sortByName () {
+    order ===1 ? setOrder(-1) : setOrder(1);
+  }
+  function sortByMasa () {
+    xMasa ===1 ? setXmasa(-1) : setXmasa(1);
+  }
+
   return (
     <>
       <form onSubmit={handleSubmit} className="filtro"> 
         <h1>NASA</h1>
-        <TextField id='outlined-basic' label='Filtrar por peso mínimo: ' variant='filled' name='minimum_mass' />
-        <Button variant='contained' type="submit" className="Button"  sx={{margin:1}}>Buscar</Button>
+       <TextField id='outlined-basic' label='Filtrar por peso mínimo: ' variant='filled' name='minimum_mass' />
+        <Button variant='contained' type="submit" className="Button"  sx={{margin:1}}>Buscar</Button> 
       </form>
+      <div className="ordenar">
+        <Button onClick={sortByName} variant="contained" className="Button" name="nombre">Nombre</Button>
+        {/* <Button variant="contained" className="Button" name="nombre">Fecha</Button> */}
+        <Button onClick={sortByMasa} variant="contained" className="Button" name="nombre">Masa</Button>
+
+      </div>
       <div className="paginacion">
         <Button variant='contained' className="Button" name='ant' onClick={handleAnterior} >Anterior</Button>
         <Button variant='contained' className="Button" name='sig' onClick={handleSiguiente} >Siguiente</Button>
@@ -83,68 +98,3 @@ function List () {
 }
 
 export default List;
-/*
-<div className="paginacion">
-        <button name='ant' onClick={handleAnterior} >Anterior</button>
-        <button name='sig' onClick={handleSiguiente} >Siguiente</button>
-</div>
-
-const result = useAxios('http://localhost:5000/landing');
-  const data = result.slice(0,100);
-  console.log("el resultado de data es:");
-  console.log(data);
-  //setAsteroides(data);
-  console.log(asteroides);
-  *****************************************
-
-  **************************************
-  const handleFiltro = async (e) => {
-    //setFiltro(e.target.name)
-    console.log(filtro);
-    try{
-      const res = await axios.get(`http://localhost:5000/landing/mass?minimum_mass=${filtro}`)
-      const data = await res.data;
-      setAsteroides(data);
-      
-    }
-    catch (err){
-      console.log(`Error: ${err}`);
-      throw err;
-    }
-    console.log("asteroides");
-    console.log(asteroides);
-  }
-  ***************************
-<div className="landings">
-        <p>Landingngngngng</p>
-        // {data ? <p>{data.length}</p> : <p>no  hay data</p>} 
-        {asteroides ? <p>si hay {asteroides.length}</p> : <p>no  hay</p>
-        } 
-      </div>
-<form action="landing" method="get" className="filtro">
-
-onClick={handleFiltro}
-<form action="onSubmit" className="filtro">
-        <TextField id='outlined-basic' label='Filtrar por peso mínimo: ' variant='filled' name='minimum_mass' />
-        <Button variant='contained' type='submit' className="Button" sx={{margin:1}}>Buscar</Button>
-
-      </form>
-*****************************************
-useEffect(() => {
-    async function getData() {
-      try {
-        const resp = await axios('http://localhost:5000/landing')
-        const res = await resp.data;
-        console.log("baiiiiii");
-        console.log(res);
-        //.then((res) => await res.json())
-        //.then((data) => setData(data.message));
-      }
-      catch (err) {
-        console.log(`Error: ${err}`);
-        throw err;
-      }
-    }
-    getData();
-  }, []);
-  */

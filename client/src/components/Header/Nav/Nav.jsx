@@ -14,8 +14,3 @@ function Nav () {
 }
 
 export default Nav;
-/*
-<Link to='/' className="nav_element">Home</Link>
-      <Link to='/landing' className="nav_element">Landings</Link>
-  
-*/

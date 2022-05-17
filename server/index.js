@@ -1,9 +1,9 @@
 require('dotenv').config();
 const express = require("express");
+require ('body-parser');
 const cors = require('cors');
 const morgan = require ('./middlewares/morganConfig');
 const paginatedResults = require ('./middlewares/paginated');
-
 
 const routesLanding = require('./routes/routesLanding');
 
@@ -18,11 +18,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/', routesLanding); 
-
 //app.use('/api/astronomy', routerNeas);
 
-app.get("/hello", (req, res) => {
-    res.json({ message: "Hello from server!" });
+app.get("/kaixo", (req, res) => {
+    res.json({ message: "Kaixo munduari!" });
   });
 
 app.listen(PORT, () => {

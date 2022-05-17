@@ -9,17 +9,28 @@ function Home () {
 //  setResult(res);
 
   //setLanding(result);
+  
   return (
     <div className="home">
       <h4>{result.title}</h4>
-      {(result.media_type==='image')? 
-        <img src={result.hdurl} alt="Imagen APOD" /> : ""}
-      <p className="explanation">{result.explanation}</p>
+      {result.media_type === "video" ?
+          <iframe
+          width="853"
+          height="480"
+          src={result.url}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title="Embedded youtube"
+        /> : <img src={result.hdurl} alt="Imagen APOD" />}
+        <p className="explanation">{result.explanation}</p>
     </div>
   )
 }
 
 export default Home;
 /*
-
+{(result.media_type==='image')? 
+        <img src={result.hdurl} alt="Imagen APOD" /> : ""}
+      <p className="explanation">{result.explanation}</p>
     */

@@ -4,7 +4,7 @@ const routesLanding = express.Router();
 const  { getMeteos, getMeteosByMinMass }  = require("../controllers/landingControllers");
 const paginatedResults = require ('../middlewares/paginated');
 
-routesLanding.get('/landing', getMeteos);
-routesLanding.get('/landing/mass', getMeteosByMinMass);
+routesLanding.get('/landing', paginatedResults(), getMeteos);
+routesLanding.get('/landing/mass', paginatedResults(), getMeteosByMinMass);
 
 module.exports = routesLanding;

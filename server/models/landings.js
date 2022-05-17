@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-//const { trusted } = require('../utils/mongoConfig');
 
 const landingsSchema = new mongoose.Schema({
     name: {
@@ -23,7 +22,7 @@ const landingsSchema = new mongoose.Schema({
         trim: true
     },
     mass: {
-        type: String,
+        type: Number,
         required: true,
         trim: true
     },

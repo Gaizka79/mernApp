@@ -1,41 +1,46 @@
 import React, { useState, useEffect } from "react";
-
-
-
+//import {  MapContainer,  TileLayer, Marker, Popup,  useMap } from 'react-leaflet';
+//import 'leaflet/dist/leaflet.css';
+//import "leaflet/dist/images/marker-shadow.png";
 import { v4 as uuidv4 } from 'uuid';
 
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 
-
-
-
 function Landings () {
 
-  useEffect(() => {
+  /* useEffect(() => {
     function getMapa() {
-      var map = L.map('map').setView([51.505, -0.09], 2);
+      //var map = L.map('map').setView([51.505, -0.09], 2);
+      var map = L.map('map').setView([43.357, -3.00], 2);
       L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZ2FpemthNzkiLCJhIjoiY2t6enI2Ym85MGQ1NDNwcXBiMHFoajl1dCJ9.e3T9xPuhX8HC0Ib-K_06OA', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
-        id: 'mapbox/streets-v11',
+        id: 'mapbox/satellite-v9',
         tileSize: 512,
         zoomOffset: -1,
         accessToken: 'pk.eyJ1IjoiZ2FpemthNzkiLCJhIjoiY2t6enI2Ym85MGQ1NDNwcXBiMHFoajl1dCJ9.e3T9xPuhX8HC0Ib-K_06OA'
       }).addTo(map);
     }
-    /* setTimeout(() => {
-      getMapa();
-    }, 2000); */
     getMapa();
 
-  }, []);
-  
+  }, []); */
+  const position = [43.357, -3.00];
   return (
-    <>
-      <div id="map"></div>
-    </>
+    <div id="map">
+      {/* <MapContainer center={[51.505, -0.09]} zoom={2} scrollWheelZoom={false}>
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={[51.505, -0.09]}>
+          <Popup>
+          A pretty  CSS3 popup. <br /> Easily customizable.
+          </Popup>
+        </Marker>
+      </MapContainer> */}
+    </div>
   )
 }
 export default Landings;
