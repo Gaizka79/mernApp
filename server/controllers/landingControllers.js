@@ -1,6 +1,6 @@
 require ('mongoose');
 //const fetch = require('node-fetch');
-//const db = require('../utils/mongoConfig');
+const db = require('../utils/mongoConfig');
 const landings = require('../models/landings');
 //const API_NASA = process.env.API_NASA;
 
